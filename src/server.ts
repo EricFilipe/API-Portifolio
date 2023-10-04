@@ -17,6 +17,10 @@ app.use(cors())
 
 app.use(express.json())
 
+app.get('/', (req, res) => {
+    res.send('hello world')
+})
+
 app.post('/userdata', (request, response) => {
     const { name, email, message } = request.body;
     pool.getConnection((err: any, connection: any) => {
@@ -34,4 +38,4 @@ app.post('/userdata', (request, response) => {
 })
 
 
-
+app.listen(process.env.PORT || 4000)
