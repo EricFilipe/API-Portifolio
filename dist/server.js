@@ -9,13 +9,16 @@ const uuid_1 = require("uuid");
 const app = (0, express_1.default)();
 const cors = require('cors');
 app.use(function (req, res, next) {
-    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Origin", "https://api-portifolio-imu2s1kaq-ericfilipe.vercel.app");
     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
     res.header("Access-Control-Allow-Methods", "POST");
     next();
 });
 app.use(cors());
 app.use(express_1.default.json());
+app.get('/', (req, res) => {
+    res.send('hello world');
+});
 app.post('/userdata', (request, response) => {
     const { name, email, message } = request.body;
     mysql_1.pool.getConnection((err, connection) => {
@@ -27,4 +30,4 @@ app.post('/userdata', (request, response) => {
         });
     });
 });
-app.listen(4000);
+app.listen(process.env.PORT || 4000);
