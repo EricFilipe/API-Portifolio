@@ -22,7 +22,7 @@ app.get('/', async (req, res) => {
     res.json(userinformation)
 })
 
-app.post('/userdata', async (request, response) => {
+app.post('/', async (request, response) => {
     const { name, email, message } = request.body;
     const user = await prismaClient.userMessage.create({
         data: {
