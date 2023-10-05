@@ -17,8 +17,9 @@ app.use(cors())
 
 app.use(express.json())
 
-app.get('/', (req, res) => {
-    res.send('hello world')
+app.get('/', async (req, res) => {
+    const userinformation = await prismaClient.userMessage.findMany()
+    res.json(userinformation)
 })
 
 app.post('/userdata', async (request, response) => {
