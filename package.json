@@ -10,7 +10,8 @@
     "dev": "ts-node-dev src/server.ts",
     "build": "npx tsc",
     "start": "node src/server.ts",
-    "vercel-build": "npx prisma migrate deploy"
+    "vercel-build": "npx prisma migrate deploy",
+    "postinstall": "prisma generate"
   },
   "keywords": [],
   "author": "",
